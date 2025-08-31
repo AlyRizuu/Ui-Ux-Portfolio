@@ -901,7 +901,7 @@ img {
 }
 
 .footer__bg {
-  background-color: var(--first-color-second);
+  background-color: #191627 !important;
   padding: 2rem 0 3rem;
 }
 
