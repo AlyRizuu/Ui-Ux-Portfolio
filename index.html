@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karrar Haider - UI/UX Designer</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <style>
+        /* ===== BASE STYLING ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.938rem;
+            background-color: hsl(250, 28%, 12%);
+            color: hsl(250, 8%, 75%);
+            line-height: 1.6;
+        }
+
+        :root {
+            --header-height: 3rem;
+            --hue-color: 250;
+            --first-color: hsl(var(--hue-color), 69%, 61%);
+            --first-color-second: hsl(var(--hue-color), 69%, 61%);
+            --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+            --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+            --title-color: hsl(var(--hue-color), 8%, 95%);
+            --text-color: hsl(var(--hue-color), 8%, 75%);
+            --text-color-light: hsl(var(--hue-color), 8%, 65%);
+            --input-color: hsl(var(--hue-color), 29%, 16%);
+            --body-color: hsl(var(--hue-color), 28%, 12%);
+            --container-color: hsl(var(--hue-color), 29%, 16%);
+            --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
+            --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--title-color);
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 768px;
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .section {
+            padding: 2rem 0 4rem;
+        }
+
+        .section__title {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section__subtitle {
+            display: block;
+            font-size: 0.875rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--first-color);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            background-color: var(--body-color);
+            box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav {
+            max-width: 968px;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo, .nav__toggle {
+            color: var(--title-color);
+            font-weight: 500;
+        }
+
+        .nav__logo:hover {
+            color: var(--first-color);
+        }
+
+        .nav__toggle {
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .nav__toggle:hover {
+            color: var(--first-color);
+        }
+
+        @media screen and (max-width: 767px) {
+            .nav__menu {
+                position: fixed;
+                bottom: -100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--body-color);
+                padding: 2rem 1.5rem 4rem;
+                box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+                border-radius: 1.5rem 1.5rem 0 0;
+                transition: 0.3s;
+            }
+        }
+
+        .nav__list {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nav__link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.813rem;
+            color: var(--title-color);
+            font-weight: 500;
+        }
+
+        .nav__link:hover {
+            color: var(--first-color);
+        }
+
+        .nav__icon {
+            font-size: 1.2rem;
+        }
+
+        .nav__close {
+            position: absolute;
+            right: 1.3rem;
+            bottom: 0.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--first-color);
+        }
+
+        .nav__close:hover {
+            color: var(--first-color-alt);
+        }
+
+        /* show menu */
+        .show-menu {
+            bottom: 0;
+        }
+
+        /* ===== HOME ===== */
+        .home__container {
+            gap: 1rem;
+        }
+
+        .home__content {
+            grid-template-columns: 0.5fr 3fr;
+            padding-top: 3.5rem;
+            align-items: center;
+        }
+
+        .home__social {
+            display: grid;
+            grid-template-columns: max-content;
+            row-gap: 1rem;
+        }
+
+        .home__social-icon {
+            font-size: 1.25rem;
+            color: var(--first-color);
+        }
+
+        .home__social-icon:hover {
+            color: var(--first-color-alt);
+        }
+
+        .home__blob {
+            width: 200px;
+            fill: var(--first-color);
+        }
+
+        .home__blob-img {
+            width: 210px;
+            dis
+        }
+
+        .home__data {
+            grid-column: 1/3;
+        }
+
+        .home__title {
+            font-size: 2rem;
+        }
+
+        .home__subtitle {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .home__description {
+            margin-bottom: 2rem;
+        }
+
+        .home__scroll {
+            display: none;
+        }
+
+        .home__scroll-button {
+            color: var(--first-color);
+            transition: 0.3s;
+        }
+
+        .home__scroll-button:hover {
+            transform: translateY(0.25rem);
+        }
+
+        .home__scroll-mouse {
+            font-size: 2rem;
+        }
+
+        .home__scroll-name {
+            font-size: 0.875rem;
+            color: var(--title-color);
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+
+        .home__scroll-arrow {
+            font-size: 1.25rem;
+        }
+
+        /* ===== BUTTONS ===== */
+        .button {
+            display: inline-block;
+            background-color: var(--first-color);
+            color: #FFF;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .button:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        .button__icon {
+            font-size: 1.25rem;
+            margin-left: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .button--flex {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* ===== ABOUT ===== */
+        .about__img {
+            width: 200px;
+            border-radius: 0.5rem;
+            justify-self: center;
+            align-self: center;
+        }
+
+        .about__description {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .about__info {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 2.5rem;
+        }
+
+        .about__info-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--title-color);
+        }
+
+        .about__info-name {
+            font-size: 0.875rem;
+        }
+
+        .about__info-title,
+        .about__info-name {
+            display: block;
+            text-align: center;
+        }
+
+        .about__buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills__container {
+            row-gap: 0;
+            display: flex
+        }
+
+        .skills__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            cursor: pointer;
+        }
+
+        .skills__icon,
+        .skills__arrow {
+            font-size: 2rem;
+            color: var(--first-color);
+        }
+
+        .skills__icon {
+            margin-right: 0.75rem;
+        }
+
+        .skills__title {
+            font-size: 1.125rem;
+        }
+
+        .skills__subtitle {
+            font-size: 0.875rem;
+            color: var(--text-color-light);
+        }
+
+        .skills__arrow {
+            margin-left: auto;
+            transition: 0.4s;
+        }
+
+        .skills__list {
+            row-gap: 1.5rem;
+            padding-left: 2.7rem;
+        }
+
+        .skills__titles {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills__name {
+            font-size: 0.938rem;
+            font-weight: 500;
+        }
+
+        .skills__bar,
+        .skills__percentage {
+            height: 5px;
+            border-radius: 0.25rem;
+        }
+
+        .skills__bar {
+            background-color: var(--first-color-lighter);
+        }
+
+        .skills__percentage {
+            display: block;
+            background-color: var(--first-color);
+        }
+
+        .skills__html {
+            width: 90%;
+        }
+
+        .skills__css {
+            width: 80%;
+        }
+
+        .skills__js {
+            width: 60%;
+        }
+
+        .skills__react {
+            width: 85%;
+        }
+
+        .skills__close .skills__list {
+            height: 0;
+            overflow: hidden;
+        }
+
+        .skills__open .skills__list {
+            height: max-content;
+            margin-bottom: 2.5rem;
+        }
+
+        .skills__open .skills__arrow {
+            transform: rotate(-180deg);
+        }
+
+        /* ===== QUALIFICATION ===== */
+        .qualification__tabs {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 2rem;
+        }
+
+        .qualification__button {
+            font-size: 1.125rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .qualification__button:hover {
+            color: var(--first-color);
+        }
+
+        .qualification__icon {
+            font-size: 1.8rem;
+            margin-right: 0.25rem;
+        }
+
+        .qualification__data {
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            column-gap: 1.5rem;
+        }
+
+        .qualification__title {
+            font-size: 0.938rem;
+            font-weight: 500;
+        }
+
+        .qualification__subtitle {
+            display: inline-block;
+            font-size: 0.813rem;
+            margin-bottom: 1rem;
+        }
+
+        .qualification__calendar {
+            font-size: 0.75rem;
+            color: var(--text-color-light);
+        }
+
+        .qualification__rounder {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background-color: var(--first-color);
+            border-radius: 50%;
+        }
+
+        .qualification__line {
+            display: block;
+            width: 1px;
+            height: 100%;
+            background-color: var(--first-color);
+            transform: translate(6px, -7px);
+        }
+
+        .qualification [data-content] {
+            display: none;
+        }
+
+        .qualification__active[data-content] {
+            display: block;
+        }
+
+        .qualification__button.qualification__active {
+            color: var(--first-color);
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects__container {
+            overflow: initial;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .projects__content {
+            padding: 0 1.5rem;
+        }
+
+        .projects__img {
+            /* width: 265px; */
+            border-radius: 0.5rem;
+            justify-self: center;
+        }
+
+        .projects__title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .projects__description {
+            margin-bottom: 0.75rem;
+        }
+
+        .projects__button:hover .button__icon {
+            transform: translateX(0.25rem);
+        }
+
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            content: '';
+        }
+
+        .swiper-projects-icon {
+            font-size: 2rem;
+            color: var(--first-color);
+        }
+
+        .swiper-button-prev {
+            left: 0;
+        }
+
+        .swiper-button-next {
+            right: 0;
+        }
+
+        .swiper-container-horizontal > .swiper-pagination-bullets {
+            bottom: -2.5rem;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--first-color);
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next,
+        .swiper-pagination-bullet {
+            outline: none;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact__container {
+            row-gap: 3rem;
+        }
+
+        .contact__information {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        .contact__icon {
+            font-size: 2rem;
+            color: var(--first-color);
+            margin-right: 0.75rem;
+        }
+
+        .contact__title {
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .contact__subtitle {
+            font-size: 0.875rem;
+            color: var(--text-color-light);
+        }
+
+        .contact__label {
+            font-size: 0.875rem;
+            color: var(--title-color);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .contact__input {
+            width: 100%;
+            background-color: var(--input-color);
+            border: none;
+            outline: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.938rem;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+        }
+
+        .contact__input:focus {
+            border: 2px solid var(--first-color);
+        }
+
+        .contact__input::placeholder {
+            color: var(--text-color-light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact__submit {
+            display: block;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.938rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding-top: 2rem;
+        }
+
+        .footer__container {
+            row-gap: 3.5rem;
+        }
+
+        .footer__bg {
+            background-color: var(--first-color-second);
+            padding: 2rem 0 3rem;
+        }
+
+        .footer__title {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer__subtitle {
+            font-size: 1rem;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.5rem;
+        }
+
+        .footer__link:hover {
+            color: var(--first-color-lighter);
+        }
+
+        .footer__social {
+            font-size: 1.25rem;
+            margin-right: 1.5rem;
+        }
+
+        .footer__social:hover {
+            color: var(--first-color-lighter);
+        }
+
+        .footer__copy {
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--text-color-light);
+            margin-top: 3rem;
+        }
+
+        .footer__title,
+        .footer__subtitle,
+        .footer__link,
+        .footer__social {
+            color: #FFF;
+        }
+
+        /* ===== SCROLL UP ===== */
+        .scrollup {
+            position: fixed;
+            right: 1rem;
+            bottom: -20%;
+            background-color: var(--first-color);
+            opacity: 0.8;
+            padding: 0 0.3rem;
+            border-radius: 0.4rem;
+            z-index: 10;
+            transition: 0.4s;
+        }
+
+        .scrollup:hover {
+            background-color: var(--first-color-alt);
+        }
+
+        .scrollup__icon {
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+
+        /* Show scroll */
+        .show-scroll {
+            bottom: 5rem;
+        }
+
+        /* ===== SCROLL BAR ===== */
+        ::-webkit-scrollbar {
+            width: 0.6rem;
+            background-color: var(--scroll-bar-color);
+            border-radius: 0.5rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--scroll-thumb-color);
+            border-radius: 0.5rem;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-color-light);
+        }
+
+        /* ===== MEDIA QUERIES ===== */
+        /* For small devices */
+        @media screen and (max-width: 350px) {
+            .container {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .nav__menu {
+                padding: 2rem 0.25rem 4rem;
+            }
+
+            .nav__list {
+                column-gap: 0;
+            }
+
+            .home__content {
+                grid-template-columns: 0.25fr 3fr;
+            }
+
+            .home__blob {
+                width: 180px;
+            }
+
+            .skills__title {
+                font-size: 0.938rem;
+            }
+
+            .qualification__data {
+                gap: 0.5rem;
+            }
+
+            .projects__img {
+                width: 200px;
+            }
+            
+            .projects__container {
+                padding: 0 20px;
+            }
+        }
+
+        /* For medium devices */
+        @media screen and (min-width: 568px) {
+            .home__content {
+                grid-template-columns: max-content 1fr 1fr;
+            }
+
+            .home__data {
+                grid-column: initial;
+            }
+
+            .home__img {
+                order: 1;
+                justify-self: center;
+            }
+
+            .about__container,
+            .skills__container,
+            .projects__container,
+            .contact__container,
+            .footer__container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .qualification__sections {
+                display: grid;
+                grid-template-columns: 0.6fr;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .container {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            .section {
+                padding: 6rem 0 2rem;
+            }
+
+            .section__subtitle {
+                margin-bottom: 4rem;
+            }
+
+            .header {
+                top: 0;
+                bottom: initial;
+            }
+
+            .header,
+            .main,
+            .footer__container {
+                padding: 0 1rem;
+            }
+
+            .nav {
+                height: calc(var(--header-height) + 1.5rem);
+                column-gap: 1rem;
+            }
+
+            .nav__icon,
+            .nav__close,
+            .nav__toggle {
+            display: none;
+            }
+
+            .nav__list {
+                display: flex;
+                column-gap: 2rem;
+            }
+
+            .nav__menu {
+                margin-left: auto;
+            }
+
+            .change-theme {
+                margin: 0;
+            }
+
+            .home__container {
+                row-gap: 5rem;
+            }
+
+            .home__content {
+                padding-top: 5.5rem;
+                column-gap: 2rem;
+            }
+
+            .home__blob {
+                width: 270px;
+            }
+
+            .home__scroll {
+                display: block;
+            }
+
+            .home__scroll-button {
+                margin-left: 3rem;
+            }
+
+            .about__container {
+                column-gap: 5rem;
+            }
+
+            .about__img {
+                width: 350px;
+            }
+
+            .about__description {
+                text-align: initial;
+            }
+
+            .about__info {
+                justify-content: space-between;
+            }
+
+            .about__buttons {
+                justify-content: initial;
+            }
+
+            .qualification__tabs {
+                justify-content: center;
+            }
+
+            .qualification__button {
+                margin: 0 1rem;
+            }
+
+            .qualification__sections {
+                grid-template-columns: 0.5fr;
+            }
+
+            .projects__img {
+                width: 320px;
+            }
+
+            .projects__content {
+                align-items: center;
+            }
+
+            .footer__container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer__bg {
+                padding: 3rem 0 3.5rem;
+            }
+
+            .footer__links {
+                flex-direction: row;
+                column-gap: 2rem;
+            }
+
+            .footer__socials {
+                justify-self: flex-end;
+            }
+
+            .footer__copy {
+                margin-top: 4.5rem;
+            }
+        }
+
+        /* For large devices */
+        @media screen and (min-width: 1024px) {
+            .header,
+            .main,
+            .footer__container {
+                padding: 0;
+            }
+
+            .home__blob {
+                width: 320px;
+            }
+
+            .home__social {
+                transform: translateX(-6rem);
+            }
+
+            .projects__container {
+                width: 750px;
+            }
+
+            .contact__form {
+                width: 460px;
+            }
+
+            .contact__inputs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== MODAL STYLING ===== */
+        .popup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            width: 90%;
+            height: 90%;
+            background: #fff;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+            background: none;
+            border: none;
+            z-index: 1010;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 48px;
+            color: #000000;
+            cursor: pointer;
+            z-index: 1010;
+            padding: 10px;
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .thumbnail-grid img {
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+            max-width: 200px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .thumbnail-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-view {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .carousel-view img {
+          
+            width: auto;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .backToGrid {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            padding: 8px 12px;
+            cursor: pointer;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Swiper container styling */
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            background-color: var(--container-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: var(--text-color);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--first-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Karrar Haider</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">
+                            <i class="uil uil-estate nav__icon"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            <i class="uil uil-user nav__icon"></i> About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">
+                            <i class="uil uil-atom nav__icon"></i> Skills
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#qualification" class="nav__link">
+                            <i class="uil uil-book-alt nav__icon"></i> Qualification
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link">
+                            <i class="uil uil-desktop-alt nav__icon"></i> Projects
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__btns">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content grid">
+                    <div class="home__social">
+                        <a href="https://www.linkedin.com/in/Karrar Haider-aly-4b8a94253/" target="_blank" class="home__social-icon">
+                            <i class="uil uil-linkedin-alt"></i>
+                        </a>
+
+                        <a href="https://github.com/AlyRizuu" target="_blank" class="home__social-icon">
+                            <i class="uil uil-github-alt"></i>
+                        </a>
+
+                        <a href="https://twitter.com/AlyHayder99" target="_blank" class="home__social-icon">
+                            <i class="uil uil-twitter-alt"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__img">
+                        <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0" mask-type="alpha">
+                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                                                130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                                                97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                                                0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                            </mask>
+                            <g mask="url(#mask0)" style="display: flex; justify-content: center; align-items: center;">
+                                <path
+                                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                                                165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                                                129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                                                -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
+                                <image class="home__blob-img" x="0" y="0" href="./assets//img/general/perfil.jpeg" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="home__data">
+                        <h1 class="home__title">
+                            Hi, I'm Karrar Haider
+                        </h1>
+                        <h3 class="home__subtitle">UI/UX Designer</h3>
+                        <p class="home__description">
+                            <a href="#">Freelancer</a>
+                        </p>
+                        <a href="#contact" class="home__button button button--flex">
+                            Contact Me <i class="uil uil-message button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home__scroll">
+                    <a href="#about" class="home__scroll-button button--flex">
+                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+                        <span class="home__scroll-name">Scroll down</span>
+                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <h2 class="section__title">About me</h2>
+            <span class="section__subtitle">My introduction</span>
+
+            <div class="about__container container grid">
+                <img src="./assets/img/abt.jpg" alt="About section background image" class="about__img">
+
+                <div class="about__data">
+                    <p class="about__description">
+                       UI/UX Designer with 3+ years of experience crafting user-focused websites and apps that balance functionality with modern design." 🎨 🖥️
+                    </p>
+                    <div class="about__info">
+                        <div>
+                            <span class="about__info-title">03+</span>
+                            <span class="about__info-name">Years<br> experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">06+</span>
+                            <span class="about__info-name">Completed <br> projects</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">05+</span>
+                            <span class="about__info-name">Earned <br> certificates</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="#" class="button button--flex">
+                            Download Resume<i class="uil uil-download-alt button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SKILLS ====================-->
+        <section class="skills section" id="skills">
+            <h2 class="section__title">Skills</h2>
+            <span class="section__subtitle">My technical level</span>
+
+            <div class="skills__container container grid">
+                <div style="width: 100%; display: flex; justify-content: space-between;">
+                    <!--==================== SKILL 1 ====================-->
+                    <div class="skills__content skills__open">
+                        <div class="skills__header">
+                            <i class="uil uil-brackets-curly skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">UI Designing</h1>
+                                <span class="skills__subtitle">All about the core..</span>
+                            </div>
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Consistency</h3>
+                                    <span class="skills__number">100%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Accessibility</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>  
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Feedback</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>  
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Simplicity</h3>
+                                    <span class="skills__number">100%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__js"></span>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                    <!--==================== SKILL 2 ====================-->
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil uil-globe skills__icon"></i>
+
+                            <div>
+                                <h1 class="skills__title">UX Research</h1>
+                                <span class="skills__subtitle">Diving deep into user research for meaningful design.</span>
+                            </div>
+
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Typography </h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__html"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Wireframing</h3>
+                                    <span class="skills__number">70%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__css"></span>
+                                </div>
+                            </div>
+
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Testing</h3>
+                                    <span class="skills__number">100%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__react"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== QUALIFICATION ====================-->
+        <section class="qualification section" id="qualification">
+            <h2 class="section__title">Qualification</h2>
+            <span class="section__subtitle">My personal journey</span>
+
+            <div class="qualification__container container">
+                <div class="qualification__tabs">
+                    <div class="qualification__button button--flex qualification__active" data-target='#education'>
+                        <i class="uil uil-graduation-cap qualification__icon"></i>
+                        Education
+                    </div>
+
+                    <div class="qualification__button button--flex" data-target="#work">
+                        <i class="uil uil-briefcase-alt qualification__icon"></i>
+                        Work
+                    </div>
+                </div>
+
+                <div class="qualification__sections">
+                    <!--==================== QUALIFICATION CONTENT 1 ====================-->
+                    <div class="qualification__content qualification__active" data-content id="education">
+                        <!--==================== QUALIFICATION 1 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">
+                                    <a>Baccalaureate</a>
+                                </h3>
+                                <span class="qualification__subtitle">Gilgit - APS&CJG</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2018 - 2021
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <div class="qualification__line"></div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 2 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <div class="qualification__line"></div>
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">
+                                    <a>Scientific Preparatory classes</a>
+                                </h3>
+                                <span class="qualification__subtitle">Gilgit - APS&CJG</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2020 - 2023
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 3 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">
+                                    <a>
+                                        Computer Science
+                                    </a>
+                                </h3>
+                                <span class="qualification__subtitle">Pakistan - University KIU</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2023 - present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <div class="qualification__line"></div>
+                            </div>
+                        </div>
+
+                        <!--==================== QUALIFICATION 4 ====================-->
+                        <div class="qualification__data">
+                            <div></div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <!-- <div class="qualification__line"></div> -->
+                            </div>
+
+                            <div>
+                                <h3 class="qualification__title">
+                                    <a>
+                                        User Research
+                                    </a>
+                                </h3>
+                                <span class="qualification__subtitle">Pakistan - University KIU</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    2023 - present
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--==================== QUALIFICATION CONTENT 2 ====================-->
+                    <div class="qualification__content" data-content id="work">
+                        <!--==================== QUALIFICATION 1 ====================-->
+                        <div class="qualification__data">
+                            <div>
+                                <h3 class="qualification__title">
+                                    <a>Web Developer </a>
+                                </h3>
+                                <span class="qualification__subtitle">Gilgit - TechCave</span>
+                                <div class="qualification__calendar">
+                                    <i class="uil uil-calendar-alt"></i>
+                                    03/2023 - Present
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="qualification__rounder"></span>
+                                <div class="qualification__line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PROJECTS ====================-->
+        <section class="projects section" id="projects">
+            <h2 class="section__title">Projects</h2>
+            <span class="section__subtitle">Most recent work</span>
+
+            <div class="projects__container container swiper-container">
+                <div class="swiper-wrapper">
+                    <!--==================== PROJECT 1 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets//img/Home/7.jpg" alt="App Design project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title" style="text-align: center;">Home Pages</h3>
+                            <p class="projects__description" style="text-align: center;">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="1">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!--==================== PROJECT 2 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/user/4.png" alt="App Design project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">User persona </h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="2">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!--==================== PROJECT 3 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/Saas/3.jpg" alt="Project image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">Saas Dashboard </h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="3">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!--==================== PROJECT 4 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/ECommerce/Desktop218.jpg" alt="E Commerce project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">E Commerce </h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="4">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--==================== PROJECT 5 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/dashboard/Desktop-62.jpg" alt="Dashboard project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">Dashboard</h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="5">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--==================== PROJECT 6 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/11223.png" alt="Landing Page project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">Landing Page</h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="6">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--==================== PROJECT 7 ====================-->
+                    <div class="projects__content grid swiper-slide">
+                        <img src="./assets/img/website/3.png" alt="Website project's image" class="projects__img">
+
+                        <div class="projects__data">
+                            <h3 class="projects__title">Website</h3>
+                            <p class="projects__description">
+                                Crafting Digital Aromas: Explore Our Latest Blend of Coffee Shop Website Creations –
+                                Where HTML, CSS, and JavaScript Blend Seamlessly to Stir Imagination and Caffeinate User
+                                Experiences
+                            </p>
+                            <a href="#" target="_blank"
+                                class="button button--flex button--small projects__button live-link" data-project="7">
+                                Live Link
+                                <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Adding arrows -->
+                <div class="swiper-button-next">
+                    <i class="uil uil-angle-right-b swiper-projects-icon"></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="uil uil-angle-left-b swiper-projects-icon"></i>
+                </div>
+
+                <!-- Adding pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!--==================== CONTACT ME ====================-->
+        <section class="contact section" id="contact">
+            <h2 class="section__title">Contact me</h2>
+            <span class="section__subtitle">Get in touch</span>
+
+            <div class="contact__container container grid">
+                <div>
+                    <div class="contact__information">
+                        <i class="uil uil-phone-alt contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Phone</h3>
+                            <span class="contact__subtitle">+92 35559323492</span>
+                        </div>
+                    </div>
+                    <div class="contact__information">
+                        <i class="uil uil-envelope contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">E-mail</h3>
+                            <span class="contact__subtitle">alyrizuu@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact__information">
+                        <i class="uil uil-map-marker contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Location</h3>
+                            <span class="contact__subtitle">Gilgit - Pakistan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact__form grid" id="my-form">
+                    <div class="contact__inputs grid">
+                        <div class="contact__content">
+                            <label class="contact__label">Name</label>
+                            <input type="text" id="name" name="user_name" class="contact__input" required>
+                        </div>
+                        <div class="contact__content">
+                            <label class="contact__label">E-mail</label>
+                            <input type="email" id="email" name="user_email" class="contact__input" required>
+                        </div>
+                        <div class="contact__content">
+                            <label class="contact__label">Message</label>
+                            <textarea id="message" cols="0" rows="6" class="contact__input" required></textarea>
+                        </div>
+                        <div class="contact__submit">
+                            <div>
+                                <input type="button" value="Send Message" class="button button--flex" id="contact__button">
+                            </div>
+                            <div id="contact__status"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Karrar Haider</h1>
+                    <span class="footer__subtitle">UI/UX Designer</span>
+                </div>
+
+                <ul class="footer__links">
+                    <li>
+                        <a href="#about" class="footer__link">About</a>
+                    </li>
+                    <li>
+                        <a href="#projects" class="footer__link">Projects</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="footer__socials">
+                    <a href="https://www.linkedin.com/in/Karrar Haider-aly-4b8a94253/" target="_blank" class="footer__social">
+                        <i class="uil uil-linkedin-alt"></i>
+                    </a>
+                    <a href="https://github.com/AlyRizuu" target="_blank" class="footer__social">
+                        <i class="uil uil-github-alt"></i>
+                    </a>
+                    <a href="https://twitter.com/AlyHayder99" target="_blank" class="footer__social">
+                        <i class="uil uil-twitter-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <p class="footer__copy">&copy; 2023. All right reserved</p>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#home" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+    <!-- Multi Project Popup Modal for Projects 1 to 7 -->
+    <!-- Modal 1 -->
+    <div id="popupModal1" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup1" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid1"></div>
+        <div class="carousel-view" id="carouselView1">
+          <img id="popupImage1" src="" alt="Project Image">
+          <button id="prevBtn1" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn1" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid1" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="popupModal2" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup2" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid2"></div>
+        <div class="carousel-view" id="carouselView2">
+          <img id="popupImage2" src="" alt="Project Image">
+          <button id="prevBtn2" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn2" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid2" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="popupModal3" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup3" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid3"></div>
+        <div class="carousel-view" id="carouselView3">
+          <img id="popupImage3" src="" alt="Project Image">
+          <button id="prevBtn3" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn3" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid3" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="popupModal4" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup4" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid4"></div>
+        <div class="carousel-view" id="carouselView4">
+          <img id="popupImage4" src="" alt="Project Image">
+          <button id="prevBtn4" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn4" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid4" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div id="popupModal5" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup5" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid5"></div>
+        <div class="carousel-view" id="carouselView5">
+          <img id="popupImage5" src="" alt="Project Image">
+          <button id="prevBtn5" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn5" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid5" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div id="popupModal6" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup6" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid6"></div>
+        <div class="carousel-view" id="carouselView6">
+          <img id="popupImage6" src="" alt="Project Image">
+          <button id="prevBtn6" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn6" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid6" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div id="popupModal7" class="popup-modal">
+      <div class="popup-content">
+        <button id="closePopup7" class="close-btn">&times;</button>
+        <div class="thumbnail-grid" id="thumbnailGrid7"></div>
+        <div class="carousel-view" id="carouselView7">
+          <img id="popupImage7" src="" alt="Project Image">
+          <button id="prevBtn7" class="carousel-btn prev-btn">
+            <i class="uil uil-angle-left"></i>
+          </button>
+          <button id="nextBtn7" class="carousel-btn next-btn">
+            <i class="uil uil-angle-right"></i>
+          </button>
+          <button id="backToGrid7" class="backToGrid">Back</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle functionality
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Remove menu mobile when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        function linkAction() {
+            navMenu.classList.remove('show-menu');
+        }
+        navLinks.forEach(n => n.addEventListener('click', linkAction));
+
+        // Qualification tabs
+        const tabs = document.querySelectorAll('[data-target]');
+        const tabContents = document.querySelectorAll('[data-content]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.target);
+                
+                tabContents.forEach(tabContent => {
+                    tabContent.classList.remove('qualification__active');
+                });
+                target.classList.add('qualification__active');
+                
+                tabs.forEach(tab => {
+                    tab.classList.remove('qualification__active');
+                });
+                tab.classList.add('qualification__active');
+            });
+        });
+
+        // Skills accordion
+        const skillsContent = document.getElementsByClassName('skills__content');
+        const skillsHeader = document.querySelectorAll('.skills__header');
+
+        function toggleSkills() {
+            let itemClass = this.parentNode.className;
+            
+            for (let i = 0; i < skillsContent.length; i++) {
+                skillsContent[i].className = 'skills__content skills__close';
+            }
+            
+            if (itemClass === 'skills__content skills__close') {
+                this.parentNode.className = 'skills__content skills__open';
+            }
+        }
+
+        skillsHeader.forEach((el) => {
+            el.addEventListener('click', toggleSkills);
+        });
+
+        // Scroll up functionality
+        function scrollUp() {
+            const scrollUp = document.getElementById('scroll-up');
+            if (this.scrollY >= 560) scrollUp.classList.add('show-scroll'); 
+            else scrollUp.classList.remove('show-scroll');
+        }
+        window.addEventListener('scroll', scrollUp);
+
+        // Initialize Swiper for projects
+        var swiper = new Swiper('.projects__container', {
+            cssMode: true,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Global object to store carousel data for each project
+            var carouselData = {};
+
+            // Attach event listeners to live link buttons to open modals
+            var liveLinkButtons = document.querySelectorAll('.live-link');
+            liveLinkButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var project = btn.getAttribute('data-project');
+                    var modal = document.getElementById('popupModal' + project);
+                    if(modal) {
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            // Function to initialize carousel and thumbnail grid for each modal
+            function initCarousel(projectNumber, images) {
+                var modal = document.getElementById('popupModal' + projectNumber);
+                if (!modal) return;
+                
+                var thumbnailGrid = document.getElementById('thumbnailGrid' + projectNumber);
+                var carouselView = document.getElementById('carouselView' + projectNumber);
+                var popupImage = document.getElementById('popupImage' + projectNumber);
+                var nextBtn = document.getElementById('nextBtn' + projectNumber);
+                var prevBtn = document.getElementById('prevBtn' + projectNumber);
+                var backToGrid = document.getElementById('backToGrid' + projectNumber);
+                var closeBtn = document.getElementById('closePopup' + projectNumber);
+                var currentIndex = 0;
+
+                // Populate thumbnail grid with card-style images
+                thumbnailGrid.innerHTML = ''; // Clear any existing content
+                images.forEach(function(src, index) {
+                    var thumb = document.createElement('img');
+                    thumb.src = src;
+                    thumb.alt = "Thumbnail " + (index + 1);
+                    thumb.style.width = "200px";
+                    thumb.style.height = "auto";
+                    thumb.style.margin = "10px";
+                    thumb.style.cursor = "pointer";
+                    thumb.addEventListener('click', function() {
+                        currentIndex = index;
+                        popupImage.src = images[currentIndex];
+                        thumbnailGrid.style.display = 'none';
+                        carouselView.style.display = 'block';
+                        carouselData[projectNumber].currentIndex = currentIndex;
+                    });
+                    thumbnailGrid.appendChild(thumb);
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    popupImage.src = images[currentIndex];
+                    carouselData[projectNumber].currentIndex = currentIndex;
+                });
+
+                prevBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    popupImage.src = images[currentIndex];
+                    carouselData[projectNumber].currentIndex = currentIndex;
+                });
+
+                backToGrid.addEventListener('click', function() {
+                    carouselView.style.display = 'none';
+                    thumbnailGrid.style.display = 'flex';
+                });
+
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevents the event from bubbling up
+                    modal.style.display = 'none';
+                    // Reset view to show thumbnail grid on modal close
+                    carouselView.style.display = 'none';
+                    thumbnailGrid.style.display = 'flex';
+                });
+
+                // Store data for global keydown event and further navigation
+                carouselData[projectNumber] = {
+                    modal: modal,
+                    popupImage: popupImage,
+                    images: images,
+                    currentIndex: currentIndex
+                };
+
+                // Ensure the grid is visible initially
+                thumbnailGrid.style.display = 'flex';
+            }
+
+            // Initialize carousels for projects
+            initCarousel(1, [
+                '../assets/img/Home/1.jpg',
+                '../assets/img/Home/2.jpg',
+                '../assets/img/Home/3.jpg',
+                '../assets/img/Home/4.jpg',
+                '../assets/img/Home/5.jpg',
+                '../assets/img/Home/6.jpg',
+                '../assets/img/Home/7.jpg',
+                '../assets/img/Home/8.jpg',
+                '../assets/img/Home/9.png',
+                '../assets/img/Home/10.png',
+                '../assets/img/Home/11.png',
+                '../assets/img/Home/12.png',
+                '../assets/img/Home/13.png',
+                '../assets/img/Home/14.png',
+
+            ]);
+            
+            initCarousel(2, [
+                '../assets/img/user/1.png',
+                '../assets/img/user/2.png',
+                '../assets/img/user/3.png',
+                '../assets/img/user/4.png',
+            ]);
+            
+            initCarousel(3, [
+            '../assets/img/Saas/1.jpg',
+            '../assets/img/Saas/2.jpg',
+            '../assets/img/Saas/3.jpg',
+            '../assets/img/Saas/4.jpg',
+            ]);
+            
+            initCarousel(4, [
+                '../assets/img/ECommerce/Desktop-18.jpg',
+                '../assets/img/ECommerce/Desktop2-.jpg',
+               '../assets/img/ECommerce/Desktop21.jpg',
+                  '../assets/img/ECommerce/Desktop22.jpg',
+                '../assets/img/ECommerce/Desktop23.jpg',
+               '../assets/img/ECommerce/Desktop24.jpg',
+                  '../assets/img/ECommerce/Desktop25.jpg',
+                '../assets/img/ECommerce/Desktop26.jpg',
+               '../assets/img/ECommerce/Desktop27.jpg',
+                '../assets/img/ECommerce/Desktop28.jpg',
+                '../assets/img/ECommerce/Desktop29.jpg',
+               '../assets/img/ECommerce/Desktop30.jpg',
+                  '../assets/img/ECommerce/Desktop32.jpg',
+                '../assets/img/ECommerce/Desktop31.jpg',
+               '../assets/img/ECommerce/Desktop33.jpg',
+                  '../assets/img/ECommerce/Desktop34.jpg',
+                '../assets/img/ECommerce/Desktop218.jpg',
+               '../assets/img/ECommerce/HOME PAGE.jpg',
+            ]);
+            
+            initCarousel(5, [
+            '../assets/img/dashboard/Desktop-54.jpg',
+            '../assets/img/dashboard/Desktop-55.jpg',
+            '../assets/img/dashboard/Desktop-62.jpg',
+            '../assets/img/dashboard/Desktop-75.png',   
+            '../assets/img/dashboard/Overview.png',
+            ]);
+            
+            initCarousel(6, [
+
+               '../assets/img/landing/4.jpg',
+                '../assets/img/landing/7.jpg',
+                '../assets/img/landing/8.jpg',
+                '../assets/img/landing/cop1.jpg',
+                '../assets/img/landing/cop2.jpg',
+                '../assets/img/landing/Desktop6.jpg',
+                '../assets/img/landing/Desktop11.jpg',
+                '../assets/img/landing/Desktop13.jpg',
+
+
+
+            ]);
+            
+            initCarousel(7, [
+               '../assets/img/website/1.png',
+               '../assets/img/website/2.png',
+               '../assets/img/website/3.png',
+               '../assets/img/website/4.png',
+               '../assets/img/website/5.png',
+            ]);
+
+            // Global arrow key navigation for active modal carousel
+            window.addEventListener('keydown', function(e) {
+                var activeModal = document.querySelector('.popup-modal[style*="display: flex"]');
+                if(!activeModal) return;
+                var projectNumber = activeModal.id.replace('popupModal', '');
+                var carousel = carouselData[projectNumber];
+                if(!carousel) return;
+                if(e.key === 'ArrowRight') {
+                    carousel.currentIndex = (carousel.currentIndex + 1) % carousel.images.length;
+                    carousel.popupImage.src = carousel.images[carousel.currentIndex];
+                } else if (e.key === 'ArrowLeft') {
+                    carousel.currentIndex = (carousel.currentIndex - 1 + carousel.images.length) % carousel.images.length;
+                    carousel.popupImage.src = carousel.images[carousel.currentIndex];
+                } else if (e.key === 'Escape') {
+                    activeModal.style.display = 'none';
+                    var carouselView = document.getElementById('carouselView' + projectNumber);
+                    var thumbnailGrid = document.getElementById('thumbnailGrid' + projectNumber);
+                    if (carouselView && thumbnailGrid) {
+                        carouselView.style.display = 'none';
+                        thumbnailGrid.style.display = 'flex';
+                    }
+                }
+            });
+
+            // Global click to close modal when clicking outside the popup content
+            window.addEventListener('click', function(e) {
+                if(e.target.classList.contains('popup-modal')) {
+                    e.target.style.display = 'none';
+                    // Reset all modals to show thumbnail grid
+                    for (let i = 1; i <= 7; i++) {
+                        var carouselView = document.getElementById('carouselView' + i);
+                        var thumbnailGrid = document.getElementById('thumbnailGrid' + i);
+                        if (carouselView && thumbnailGrid) {
+                            carouselView.style.display = 'none';
+                            thumbnailGrid.style.display = 'flex';
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
